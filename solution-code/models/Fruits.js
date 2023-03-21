@@ -22,5 +22,6 @@ fruits = [
 ];
 
 module.exports = {
+	// object shorthand (creates a key with this kbject name)
 	fruits,
 };

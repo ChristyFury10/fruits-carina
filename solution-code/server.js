@@ -15,6 +15,16 @@ const fruits = models.fruits
 // Middleware 
 app.set('view engine', 'ejs');
 
+app.use(express.urlencoded({ extended:false }));
+// without this urlencoded we get req.body undefined
+
+app.use((req, res, next)=>{
+    console.log("middleware...")
+    next() 
+    //the next method tells the method to continue after middleware does whatever it ie meant to do
+})
+
+
 
 // Routes
 // Hungry for more to create my own API, and APIs always should be in JSON
@@ -29,7 +39,7 @@ app.get('/', (req, res) => {
     res.render('home.ejs');
 })
 
-app.use('', fruitsController);
+app.use('/fruits', fruitsController);
 
 app.get('/*', (req, res) => {
     res.render("404.ejs")
